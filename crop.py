@@ -1,6 +1,7 @@
 import os
 import pyvips
 import time
+from pathlib import Path
 
 def crop_image_with_coordinates(input_file, output_file, x_cord, y_cord, width, height):
     # Load the image
@@ -36,8 +37,8 @@ def crop_images_in_folder(input_folder, output_folder, x_cord, y_cord, width, he
     print(f"Total time taken: {total_time:.2f} seconds")
 
 # Specify input and output folders
-input_folder = '/home/appleboblin/Downloads/pearls/'
-output_folder = '/home/appleboblin/Downloads/cropped/'
+input_folder = Path("pearls")
+output_folder = Path("cropped")
 
 # Specify the coordinates for cropping
 x_cord = 1350   # x_cord coordinate of the cropping area
