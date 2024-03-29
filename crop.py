@@ -36,15 +36,19 @@ def crop_images_in_folder(input_folder, output_folder, x_cord, y_cord, width, he
     total_time = end_time - start_time
     print(f"Total time taken: {total_time:.2f} seconds")
 
-# Specify input and output folders
-input_folder = Path("pearls")
-output_folder = Path("cropped")
+def main():
+    # Specify input and output folders
+    input_folder = Path("pearls")
+    output_folder = Path("cropped")
 
-# Specify the coordinates for cropping
-x_cord = 1350   # x_cord coordinate of the cropping area
-y_cord = 1100    # y_cord coordinate of the cropping area
-width = 1200  # Width of the cropping area
-height = 900 # Height of the cropping area
+    # Specify the coordinates for cropping
+    x_cord = 1350   # x_cord coordinate of the cropping area
+    y_cord = 1100    # y_cord coordinate of the cropping area
+    width = 1200  # Width of the cropping area
+    height = 900 # Height of the cropping area
 
-# Crop images in the input folder with selected coordinates
-crop_images_in_folder(input_folder, output_folder, x_cord, y_cord, width, height)
+    # Crop images in the input folder with selected coordinates
+    crop_images_in_folder(input_folder, output_folder, x_cord, y_cord, width, height)
+
+if __name__ == '__main__':
+    main()
