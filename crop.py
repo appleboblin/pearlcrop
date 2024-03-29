@@ -21,15 +21,20 @@ def crop_images_in_folder(input_folder, output_folder, x_cord, y_cord, width, he
     # start timer
     start_time = time.time()
 
-    # Loop through all files in the input folder
-    for filename in os.listdir(input_folder):
-        input_file = os.path.join(input_folder, filename)
-        output_file = os.path.join(output_folder, filename)
+    # Loop through all files and folders in the input folder
+    for item in os.listdir(input_folder):
+        item_path = os.path.join(input_folder, item)
         
-        # Check if the file is an image (you may want to add more file format checks if needed)
-        if input_file.lower().endswith(('.png', '.jpg', '.jpeg', '.tiff', '.bmp')):
+        # If item is a directory, recursively call crop_images_in_folder
+        if os.path.isdir(item_path):
+            # Create corresponding subfolder in the output directory
+            sub_output_folder = os.path.join(output_folder, item)
+            crop_images_in_folder(item_path, sub_output_folder, x_cord, y_cord, width, height)
+        # If item is a file and is an image, crop it
+        elif item.lower().endswith(('.png', '.jpg', '.jpeg', '.tiff', '.bmp')):
             # Crop the image with selected coordinates
-            crop_image_with_coordinates(input_file, output_file, x_cord, y_cord, width, height)
+            output_file = os.path.join(output_folder, item)
+            crop_image_with_coordinates(item_path, output_file, x_cord, y_cord, width, height)
 
     # End timing
     end_time = time.time()
